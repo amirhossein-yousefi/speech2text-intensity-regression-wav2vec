@@ -118,7 +118,6 @@ speech_mtl_end2end/
 
 ## Notes
 - **Intensity loss weight** is controlled by `--lambda_intensity`. Set `0.0` to disable.
-- The models avoid `NoneType + Tensor` issues by **only** summing losses that are present.
 - For **Whisper**, we use a mean-pooled encoder representation for the regression head.
 - For **Wav2Vec2-CTC**, we use attention-masked mean pooling for the regression head.
 - You can swap `librispeech_asr` with `mozilla-foundation/common_voice_13_0` by passing `--dataset` and `--language` accordingly.
