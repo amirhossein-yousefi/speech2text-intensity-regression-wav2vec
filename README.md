@@ -93,7 +93,9 @@ python -m src.speech_mtl.training.train_wav2vec2
    --num_train_epochs 1 
    --output_dir outputs\wav2vec2_small
 ```
-
+The training script validates each epoch.
+ you can download the finetuned weights fo one epoch from https://drive.google.com/file/d/1opkvEG4GLVya6rxWb87CMhs3BD-GByZt/view?usp=sharing
+the training logs for 1 epoch is found in [training-test-logs](../speech-intensity-multitask/training-test-logs)
 ### 3) Evaluate
 ```bash
 python -m src.speech_mtl.eval.evaluate \
