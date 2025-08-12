@@ -4,6 +4,44 @@ This project trains and serves **two** end-to-end speech models that jointly per
 - **Speech-to-Text (ASR)** and
 - **Voice intensity regression** (in dBFS normalized to [0,1]) from the same audio.
 
+
+## Project Structure
+```
+speech_mtl_end2end/
+├── README.md
+├── requirements.txt
+├── setup.cfg
+├── Makefile
+├── .gitignore
+├── LICENSE
+├── configs/
+│   ├── whisper_base.yaml
+│   └── wav2vec2_base.yaml
+├── app/
+│   └── gradio_app.py
+├── src/
+│   └── speech_mtl/
+│       ├── __init__.py
+│       ├── utils/
+│       │   ├── audio.py
+│       │   └── metrics.py
+│       ├── data/
+│       │   ├── datasets.py
+│       │   └── collators.py
+│       ├── models/
+│       │   ├── multitask_whisper.py
+│       │   └── multitask_wav2vec2.py
+│       ├── training/
+│       │   ├── train_whisper.py
+│       │   └── train_wav2vec2.py
+│       ├── eval/
+│       │   └── evaluate.py
+│       └── inference/
+│           └── predict.py
+└── tests/
+    └── test_audio_utils.py
+```
+
 ## Approaches
 1. **Whisper + Regression head** (Seq2Seq): `src/speech_mtl/models/multitask_whisper.py`
 2. **Wav2Vec2-CTC + Regression head**: `src/speech_mtl/models/multitask_wav2vec2.py`
@@ -50,8 +88,8 @@ python -m src.speech_mtl.training.train_wav2vec2
    --train_split train.clean.100 
    --eval_split validation.clean 
    --text_column text 
-   --max_train_samples 5000 
-   --max_eval_samples 1000 
+   --max_train_samples 1000 
+   --max_eval_samples 150 
    --num_train_epochs 1 
    --output_dir outputs\wav2vec2_small
 ```
@@ -79,42 +117,7 @@ python app/gradio_app.py --model whisper --checkpoint outputs/whisper_small_mtl
 python app/gradio_app.py --model wav2vec2 --checkpoint outputs/wav2vec2_base_mtl
 ```
 
-## Project Structure
-```
-speech_mtl_end2end/
-├── README.md
-├── requirements.txt
-├── setup.cfg
-├── Makefile
-├── .gitignore
-├── LICENSE
-├── configs/
-│   ├── whisper_base.yaml
-│   └── wav2vec2_base.yaml
-├── app/
-│   └── gradio_app.py
-├── src/
-│   └── speech_mtl/
-│       ├── __init__.py
-│       ├── utils/
-│       │   ├── audio.py
-│       │   └── metrics.py
-│       ├── data/
-│       │   ├── datasets.py
-│       │   └── collators.py
-│       ├── models/
-│       │   ├── multitask_whisper.py
-│       │   └── multitask_wav2vec2.py
-│       ├── training/
-│       │   ├── train_whisper.py
-│       │   └── train_wav2vec2.py
-│       ├── eval/
-│       │   └── evaluate.py
-│       └── inference/
-│           └── predict.py
-└── tests/
-    └── test_audio_utils.py
-```
+
 
 ## Notes
 - **Intensity loss weight** is controlled by `--lambda_intensity`. Set `0.0` to disable.
