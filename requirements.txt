@@ -1,0 +1,16 @@
+transformers>=4.43.0
+datasets>=2.18.0
+torchaudio>=2.2.0
+accelerate>=0.31.0
+evaluate>=0.4.2
+jiwer>=3.0.3
+librosa>=0.10.2
+soundfile>=0.12.1
+pyloudnorm>=0.1.1
+numpy>=1.24.0
+scikit-learn>=1.4.0
+gradio>=4.31.5
+pyyaml>=6.0.1
+tqdm>=4.66.4
+matplotlib>=3.8.0
+rich>=13.7.0
