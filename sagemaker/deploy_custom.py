@@ -1,4 +1,3 @@
-# sagemaker/deploy_custom.py
 # Upload model.tar.gz to S3 and deploy HuggingFaceModel endpoint (serverless or real-time).
 
 import argparse

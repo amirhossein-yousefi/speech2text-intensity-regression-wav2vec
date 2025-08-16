@@ -1,6 +1,4 @@
-# sagemaker/code/inference.py
 # Custom SageMaker inference script for multitask ASR + intensity regression.
-# Works with Hugging Face DLC via HuggingFaceModel + custom entry point.
 # Returns: {"text": str, "intensity_norm": float (0..1), "intensity_dbfs": float [-60,0]}
 
 import os
