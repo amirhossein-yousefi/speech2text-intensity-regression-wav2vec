@@ -40,6 +40,15 @@ speech_mtl_end2end/
 │           └── predict.py
 └── tests/
     └── test_audio_utils.py
+└── sagemaker/
+    ├── README.md                     
+    ├── deploy_custom.py              
+    ├── package_model.py              
+    ├── client/
+    │   └── invoke.py                
+    └── code/
+        ├── inference.py              
+        └── requirements.txt 
 ```
 
 ## Approaches
@@ -128,7 +137,10 @@ python app/gradio_app.py --model whisper --checkpoint outputs/whisper_small_mtl
 python app/gradio_app.py --model wav2vec2 --checkpoint outputs/wav2vec2_base_mtl
 ```
 
+### 6) Deploy to Amazon SageMaker
 
+This project includes a production-style deployment flow using **Amazon SageMaker** with Hugging Face DLCs. You can package your trained checkpoint, deploy it as a serverless or real-time endpoint, and invoke it with audio files.
+find more info and about how to deploy the model in sagemaker  [here](sagemaker).
 
 ## Notes
 - **Intensity loss weight** is controlled by `--lambda_intensity`. Set `0.0` to disable.
