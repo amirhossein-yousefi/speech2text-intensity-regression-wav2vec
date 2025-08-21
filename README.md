@@ -144,6 +144,7 @@ python app/gradio_app.py --model wav2vec2 --checkpoint outputs/wav2vec2_base_mtl
 ### 6)Train using Amazon Sagemaker
 **SageMaker training (new):** Launch managed GPU jobs for Whisper or Wav2Vec2 via `sagemaker/train.py` using Hugging Face DLCs.
 Outputs a ready‑to‑deploy model artifact for use with the existing `sagemaker/` deployment scripts.
+checkout [README.md](sagemaker/training/README.md) for the usage
 
 ### 7) Deploy to Amazon SageMaker
 
